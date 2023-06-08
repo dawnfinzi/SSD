@@ -3,7 +3,7 @@ from yacs.config import CfgNode as CN
 _C = CN()
 
 _C.MODEL = CN()
-_C.MODEL.META_ARCHITECTURE = 'SSDDetector'
+_C.MODEL.META_ARCHITECTURE = "SSDDetector"
 _C.MODEL.DEVICE = "cuda"
 # match default boxes to any ground truth with jaccard overlap higher than a threshold (0.5)
 _C.MODEL.THRESHOLD = 0.5
@@ -17,7 +17,7 @@ _C.MODEL.SIZE_VARIANCE = 0.2
 # Backbone
 # ---------------------------------------------------------------------------- #
 _C.MODEL.BACKBONE = CN()
-_C.MODEL.BACKBONE.NAME = 'vgg'
+_C.MODEL.BACKBONE.NAME = "vgg"
 _C.MODEL.BACKBONE.OUT_CHANNELS = (512, 1024, 512, 256, 256, 256)
 _C.MODEL.BACKBONE.PRETRAINED = True
 
@@ -32,15 +32,22 @@ _C.MODEL.PRIORS.MAX_SIZES = [60, 111, 162, 213, 264, 315]
 _C.MODEL.PRIORS.ASPECT_RATIOS = [[2], [2, 3], [2, 3], [2, 3], [2], [2]]
 # When has 1 aspect ratio, every location has 4 boxes, 2 ratio 6 boxes.
 # #boxes = 2 + #ratio * 2
-_C.MODEL.PRIORS.BOXES_PER_LOCATION = [4, 6, 6, 6, 4, 4]  # number of boxes per feature map location
+_C.MODEL.PRIORS.BOXES_PER_LOCATION = [
+    4,
+    6,
+    6,
+    6,
+    4,
+    4,
+]  # number of boxes per feature map location
 _C.MODEL.PRIORS.CLIP = True
 
 # -----------------------------------------------------------------------------
 # Box Head
 # -----------------------------------------------------------------------------
 _C.MODEL.BOX_HEAD = CN()
-_C.MODEL.BOX_HEAD.NAME = 'SSDBoxHead'
-_C.MODEL.BOX_HEAD.PREDICTOR = 'SSDBoxPredictor'
+_C.MODEL.BOX_HEAD.NAME = "SSDBoxHead"
+_C.MODEL.BOX_HEAD.PREDICTOR = "SSDBoxPredictor"
 
 # -----------------------------------------------------------------------------
 # INPUT
@@ -93,4 +100,5 @@ _C.TEST.MAX_PER_CLASS = -1
 _C.TEST.MAX_PER_IMAGE = 100
 _C.TEST.BATCH_SIZE = 10
 
-_C.OUTPUT_DIR = 'outputs'
+_C.OUTPUT_DIR = "outputs"
+_C.SEED = 0

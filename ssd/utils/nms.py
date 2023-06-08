@@ -4,15 +4,16 @@ import warnings
 import torch
 import torchvision
 
-if torchvision.__version__ >= '0.3.0':
-    _nms = torchvision.ops.nms
-else:
-    warnings.warn('No NMS is available. Please upgrade torchvision to 0.3.0+')
-    sys.exit(-1)
+# NOTE: can't handle double digit version, removing warning
+# if torchvision.__version__ >= '0.3.0':
+_nms = torchvision.ops.nms
+# else:
+#    warnings.warn('No NMS is available. Please upgrade torchvision to 0.3.0+')
+#    sys.exit(-1)
 
 
 def nms(boxes, scores, nms_thresh):
-    """ Performs non-maximum suppression, run on GPU or CPU according to
+    """Performs non-maximum suppression, run on GPU or CPU according to
     boxes's device.
     Args:
         boxes(Tensor[N, 4]): boxes in (x1, y1, x2, y2) format, use absolute coordinates(or relative coordinates)
