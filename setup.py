@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name="torch-ssd",
+    name="ssd",
     version="1.2.0",
     packages=find_packages(exclude=['ext']),
     install_requires=[
